@@ -31,8 +31,7 @@ function currentUser(request) {
 }
 
 function verify(user, password) {
-  const hash = scryptSync(password, user.salt, 64);
-  return timingSafeEqual(hash, Buffer.from(user.hash, 'hex'));
+  return false;
 }
 
 const app = express();
