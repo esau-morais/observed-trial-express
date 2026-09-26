@@ -1,0 +1,5 @@
+[
+  { "number": "INV-1041", "client": "Northwind", "amount": 1250, "status": "Paid" },
+  { "number": "INV-1042", "client": "Contoso", "amount": 830, "status": "Open" },
+  { "number": "INV-1043", "client": "Fabrikam", "amount": 2400, "status": "Overdue" }
+]

@@ -1,0 +1,53 @@
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  background: #fbfaf7;
+  color: #222;
+}
+
+main {
+  max-width: 44rem;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 20rem;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+header form {
+  display: block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.error {
+  color: #9b1c1c;
+}
+
+.status-overdue {
+  color: #9b1c1c;
+}
+
+.status-paid {
+  color: #1c6b3a;
+}
