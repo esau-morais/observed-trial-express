@@ -20,7 +20,7 @@ export function invoicesPage({ user, invoices }) {
   return layout(
     'Invoices',
     `<header>
-      <h1>Invoices</h1>
+      <h1>Team invoices</h1>
       <p>Signed in as ${escape(user.name)}</p>
       <form method="post" action="/logout"><button type="submit">Sign out</button></form>
     </header>
