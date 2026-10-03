@@ -27,3 +27,5 @@ without credentials or external services.
 The button is named `Load items`. The `status` region becomes `Items loaded`
 after all requests finish and response data validates. The fixed expectation is
 one completed GET per click; the duplicate variant intentionally violates it.
+
+A docs-only line for the gate 7 pair.
