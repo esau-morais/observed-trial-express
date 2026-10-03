@@ -18,22 +18,51 @@
     ]
   },
   "setup": [
-    ["bun", "install", "--frozen-lockfile"],
-    ["bun", "run", "build"]
+    [
+      "bun",
+      "install",
+      "--frozen-lockfile"
+    ],
+    [
+      "bun",
+      "run",
+      "build"
+    ]
   ],
-  "start": ["bun", "run", "start"],
-  "ready": { "path": "/", "status": 200 },
+  "start": [
+    "bun",
+    "run",
+    "start"
+  ],
+  "ready": {
+    "path": "/",
+    "status": 200
+  },
   "capture": {
     "name": "Load items",
     "path": "/",
     "ready": [
-      { "kind": "wait-text", "text": "Load items" },
-      { "kind": "network-idle" }
+      {
+        "kind": "wait-text",
+        "text": "Load items"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "steps": [
-      { "kind": "click-role", "role": "button", "name": "Load items" },
-      { "kind": "wait-text", "text": "Items loaded" },
-      { "kind": "network-idle" }
+      {
+        "kind": "click-role",
+        "role": "button",
+        "name": "Load items"
+      },
+      {
+        "kind": "wait-text",
+        "text": "Items loaded"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "checks": [
       {
@@ -52,9 +81,21 @@
         "name": "Load items adds no critical accessibility violation",
         "scope": "The page after one Load items click.",
         "impact": "critical"
+      },
+      {
+        "kind": "browser-errors",
+        "id": "no-browser-errors",
+        "name": "No browser errors",
+        "scope": "One Load items click through completion and network idle."
       }
     ],
-    "browserArguments": ["--no-sandbox"],
-    "viewport": { "width": 1120, "height": 800, "scale": 1 }
+    "browserArguments": [
+      "--no-sandbox"
+    ],
+    "viewport": {
+      "width": 1120,
+      "height": 800,
+      "scale": 1
+    }
   }
 }
