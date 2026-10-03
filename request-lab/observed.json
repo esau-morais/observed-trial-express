@@ -14,37 +14,67 @@
       "build.ts",
       "server.ts",
       "package.json",
-      "bun.lock"
+      "bun.lock",
+      "duplicate.ts"
     ]
   },
   "setup": [
-    ["bun", "install", "--frozen-lockfile"],
-    ["bun", "run", "build"]
+    [
+      "bun",
+      "install",
+      "--frozen-lockfile"
+    ],
+    [
+      "bun",
+      "run",
+      "build"
+    ]
   ],
-  "start": ["bun", "run", "start"],
-  "ready": { "path": "/", "status": 200 },
+  "start": [
+    "bun",
+    "run",
+    "start"
+  ],
+  "ready": {
+    "path": "/",
+    "status": 200
+  },
   "capture": {
     "name": "Load items",
     "path": "/",
     "ready": [
-      { "kind": "wait-text", "text": "Load items" },
-      { "kind": "network-idle" }
+      {
+        "kind": "wait-text",
+        "text": "Load items"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "steps": [
-      { "kind": "click-role", "role": "button", "name": "Load items" },
-      { "kind": "wait-text", "text": "Items loaded" },
-      { "kind": "network-idle" }
+      {
+        "kind": "click-role",
+        "role": "button",
+        "name": "Load items"
+      },
+      {
+        "kind": "wait-text",
+        "text": "Items loaded"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "checks": [
       {
-        "kind": "request-count",
-        "id": "one-items-request",
-        "name": "One request per load action",
-        "scope": "One Load items click through completion and network idle.",
-        "method": "GET",
+        "status": 200,
+        "expectedCount": 2,
         "path": "/api/items",
-        "expectedCount": 1,
-        "status": 200
+        "method": "GET",
+        "scope": "One Load items click through completion and network idle.",
+        "name": "One request per load action",
+        "id": "one-items-request",
+        "kind": "request-count"
       },
       {
         "kind": "accessibility",
@@ -54,7 +84,13 @@
         "impact": "critical"
       }
     ],
-    "browserArguments": ["--no-sandbox"],
-    "viewport": { "width": 1120, "height": 800, "scale": 1 }
+    "browserArguments": [
+      "--no-sandbox"
+    ],
+    "viewport": {
+      "width": 1120,
+      "height": 800,
+      "scale": 1
+    }
   }
 }
