@@ -35,16 +35,25 @@
       { "kind": "wait-text", "text": "Items loaded" },
       { "kind": "network-idle" }
     ],
-    "check": {
-      "kind": "request-count",
-      "id": "one-items-request",
-      "name": "One request per load action",
-      "scope": "One Load items click through completion and network idle.",
-      "method": "GET",
-      "path": "/api/items",
-      "expectedCount": 1,
-      "status": 200
-    },
+    "checks": [
+      {
+        "kind": "request-count",
+        "id": "one-items-request",
+        "name": "One request per load action",
+        "scope": "One Load items click through completion and network idle.",
+        "method": "GET",
+        "path": "/api/items",
+        "expectedCount": 1,
+        "status": 200
+      },
+      {
+        "kind": "accessibility",
+        "id": "no-new-critical-violations",
+        "name": "Load items adds no critical accessibility violation",
+        "scope": "The page after one Load items click.",
+        "impact": "critical"
+      }
+    ],
     "browserArguments": ["--no-sandbox"],
     "viewport": { "width": 1120, "height": 800, "scale": 1 }
   }
