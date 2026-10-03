@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       # UX pass 2026-10-03: the feat/comment-shows-evidence build of Observed.
-      - uses: esau-morais/observed@9a901a3f8c9590a8291b8b6ab3ffacc91d803b76
+      - uses: esau-morais/observed@5d9d5b67095f04880c7a27510d2edd75c963eea5
         env:
           OBSERVED_FROM_SOURCE: true
         with:
