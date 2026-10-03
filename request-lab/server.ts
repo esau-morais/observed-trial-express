@@ -8,6 +8,10 @@ Bun.serve({
   async fetch(request) {
     const pathname = new URL(request.url).pathname;
 
+    if (pathname === '/api/items' && request.method === 'POST') {
+      throw new Error('seeded fault outside the saved journey');
+    }
+
     if (pathname === '/api/items') {
       console.log(JSON.stringify({ method: request.method, path: pathname }));
 
