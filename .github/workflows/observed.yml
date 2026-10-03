@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       # Session 1 change scope trial: the feat/change-scope build of Observed.
-      - uses: esau-morais/observed@b2a156d7d9792d21ef4c92007128215892b11fe1
+      - uses: esau-morais/observed@f397b71de231bfa28166fcb54cb0c734b7817631
         env:
           OBSERVED_FROM_SOURCE: true
         with:
