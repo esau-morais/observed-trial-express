@@ -5,17 +5,24 @@ on:
 
 permissions:
   contents: read
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: observed-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   observe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: esau-morais/observed@73ad0cbdee80d057aa5aa58f25abf04d1f3ab3b2
+      # Session 1 change scope trial: the feat/change-scope build of Observed.
+      - uses: esau-morais/observed@b0e639f3ed075fd2a54d2ebe650457fa77a4478d
         with:
-          project: .
+          project: request-lab
           base: ${{ github.event.pull_request.base.sha }}
