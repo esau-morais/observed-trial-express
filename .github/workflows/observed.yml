@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       # Session 4 recipe differences trial: the feat/recipe-differences build of Observed.
-      - uses: esau-morais/observed@10b39bbb46f30f43a1fd20eabb3b50c395f6243b
+      - uses: esau-morais/observed@05b3e0b4c85fc39bf96c823bc1819fa5dc4158a8
         env:
           OBSERVED_FROM_SOURCE: true
         with:
