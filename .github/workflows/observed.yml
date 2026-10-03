@@ -22,7 +22,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       # Session 1 change scope trial: the feat/change-scope build of Observed.
-      - uses: esau-morais/observed@b0e639f3ed075fd2a54d2ebe650457fa77a4478d
+      - uses: esau-morais/observed@75dfb888c968e3c98ecafa84d9ed2c25efad059f
+        env:
+          OBSERVED_FROM_SOURCE: true
         with:
           project: request-lab
           base: ${{ github.event.pull_request.base.sha }}
