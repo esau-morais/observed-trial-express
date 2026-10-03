@@ -28,3 +28,5 @@ jobs:
         with:
           project: request-lab
           base: ${{ github.event.pull_request.base.sha }}
+          # Checks that GitHub refuses the image upload for the workflow token.
+          image-upload-token: ${{ github.token }}
