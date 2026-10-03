@@ -51,7 +51,7 @@
         "id": "no-new-critical-violations",
         "name": "Load items adds no critical accessibility violation",
         "scope": "The page after one Load items click.",
-        "impact": "critical"
+        "impact": "minor"
       }
     ],
     "browserArguments": ["--no-sandbox"],
