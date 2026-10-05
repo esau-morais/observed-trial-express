@@ -1,0 +1,254 @@
+{
+  "id": "react-renders-fault",
+  "gate": 2,
+  "reason": "The candidate commits a second App render during the saved click.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "saved-renders verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-renders"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base measured renders match the recorder",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-renders"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/react-renders.json",
+        "path": [
+          "data",
+          "result",
+          "components",
+          {
+            "key": "name",
+            "equals": "App"
+          },
+          "updates"
+        ]
+      }
+    },
+    {
+      "label": "base no step-time mount",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/react-renders.json",
+        "path": [
+          "data",
+          "result",
+          "components",
+          {
+            "key": "name",
+            "equals": "App"
+          },
+          "mounts"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "base independent layout-effect counter includes the initial mount",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/text-2.json",
+        "path": [
+          "data",
+          "text"
+        ]
+      },
+      "expected": "2"
+    },
+    {
+      "label": "candidate measured renders match the recorder",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-renders"
+          },
+          "actual"
+        ]
+      },
+      "expected": 2,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/react-renders.json",
+        "path": [
+          "data",
+          "result",
+          "components",
+          {
+            "key": "name",
+            "equals": "App"
+          },
+          "updates"
+        ]
+      }
+    },
+    {
+      "label": "candidate no step-time mount",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/react-renders.json",
+        "path": [
+          "data",
+          "result",
+          "components",
+          {
+            "key": "name",
+            "equals": "App"
+          },
+          "mounts"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "candidate independent layout-effect counter includes the initial mount",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/text-2.json",
+        "path": [
+          "data",
+          "text"
+        ]
+      },
+      "expected": "3"
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "a488e97be79c8100407923dd054eb49ac79062f9",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "fd45a8e67c72fc7f37a90459cfc75bd14564353c",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
