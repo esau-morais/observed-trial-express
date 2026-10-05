@@ -1570,7 +1570,7 @@ export function ComparisonReport({ result }: { result: Comparison }) {
             <span {...stylex.props(styles.small)}>
               {result.mode === 'preview'
                 ? 'Application preview'
-                : 'Application comparison'}
+                : 'Seeded viewer heading'}
             </span>
           </span>
           <ThemeControl {...theme} />
