@@ -330,3 +330,5 @@ observes and verifies itself.
 ## Project documents
 
 [Product](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md) · [Configuration](docs/CONFIGURATION.md) · [GitHub, Slack and Discord](docs/GITHUB.md) · [Design](DESIGN.md) · [Changelog](CHANGELOG.md)
+
+Self-observe documentation-only verification probe.
