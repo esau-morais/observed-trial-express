@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       # Session I 2026-10-05: the Discord delivery build of Observed.
-      - uses: esau-morais/observed@d525f58666b7f2fa4065a466afc8d8b1ba404533
+      - uses: esau-morais/observed@259f865da806858fbd68425a85e516973029241c
         env:
           OBSERVED_FROM_SOURCE: true
         with:

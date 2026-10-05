@@ -1,6 +1,6 @@
 import { requestItems, type Item } from './items';
 
-export const title = 'Request lab';
+export const title = 'Item collection';
 
 export async function loadItems(): Promise<readonly Item[]> {
   const items = await requestItems();
