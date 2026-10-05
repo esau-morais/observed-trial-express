@@ -1,5 +1,5 @@
 const requestCount = 1;
-const resultText = 'Items loaded';
+const resultText = 'Wrong items';
 const button = document.querySelector('button');
 const result = document.querySelector('#result');
 
