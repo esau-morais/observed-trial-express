@@ -4,7 +4,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
   checks: write
   pull-requests: write
 
@@ -21,10 +21,13 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      # UX pass 2026-10-03: the feat/comment-shows-evidence build of Observed.
-      - uses: esau-morais/observed@3c55ca577eaa7eaec3f9af83a2213b3f32705d54
+      # Session I 2026-10-05: the Discord delivery build of Observed.
+      - uses: esau-morais/observed@259f865da806858fbd68425a85e516973029241c
         env:
           OBSERVED_FROM_SOURCE: true
         with:
           project: request-lab
           base: ${{ github.event.pull_request.base.sha }}
+          discord-bot-token: ${{ secrets.OBSERVED_DISCORD_BOT_TOKEN }}
+          discord-channel: ${{ vars.OBSERVED_DISCORD_CHANNEL }}
+          discord-images: 'true'
