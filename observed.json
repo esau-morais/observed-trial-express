@@ -60,7 +60,7 @@
         "scope": "One click through completion.",
         "method": "GET",
         "path": "/api/items",
-        "expectedCount": 1,
+        "expectedCount": 2,
         "status": 200
       },
       {
