@@ -1,11 +1,11 @@
 "use strict";
 
 function requestedCount() {
-  return 1;
+  return Number("1");
 }
 
 function unusedCount() {
-  return 2;
+  return Number("2");
 }
 
 export { requestedCount, unusedCount };
