@@ -1,4 +1,4 @@
-const requestCount = 1;
+const requestCount = Number("1");
 const resultText = 'Items loaded';
 const button = document.querySelector('button');
 const result = document.querySelector('#result');
