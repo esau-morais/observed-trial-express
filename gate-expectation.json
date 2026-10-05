@@ -1,0 +1,202 @@
+{
+  "id": "observation-change",
+  "gate": 2,
+  "reason": "A second paint changes pixels, final state and execution counts while saved request and text checks pass.",
+  "exitCode": 0,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "no-regression"
+    },
+    {
+      "label": "one-request stays passed",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text stays passed",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "only the two named checks count",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          "length"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "label": "pixel difference is reported",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "comparison",
+          "visual",
+          "kind"
+        ]
+      },
+      "expected": "changed"
+    },
+    {
+      "label": "raw PNG artifact bytes differ",
+      "actual": {
+        "kind": "png-different",
+        "file": "journey-1/base/screenshot.png",
+        "other": "journey-1/candidate/screenshot.png"
+      },
+      "expected": true
+    },
+    {
+      "label": "base timeline state matches the raw snapshot",
+      "actual": {
+        "kind": "timeline-state",
+        "file": "result.json",
+        "side": "base",
+        "includes": "Paint 1"
+      },
+      "expected": true
+    },
+    {
+      "label": "base raw paint executions",
+      "actual": {
+        "kind": "coverage",
+        "file": "journey-1/base/coverage-raw.json",
+        "pathname": "/app.js",
+        "source": "journey-1/base/source/app.ts",
+        "line": 3,
+        "column": 2,
+        "functionRange": {
+          "startOffset": 17,
+          "endOffset": 321
+        },
+        "measure": "count"
+      },
+      "expected": 1
+    },
+    {
+      "label": "candidate timeline state matches the raw snapshot",
+      "actual": {
+        "kind": "timeline-state",
+        "file": "result.json",
+        "side": "candidate",
+        "includes": "Paint 2"
+      },
+      "expected": true
+    },
+    {
+      "label": "candidate raw paint executions",
+      "actual": {
+        "kind": "coverage",
+        "file": "journey-1/candidate/coverage-raw.json",
+        "pathname": "/app.js",
+        "source": "journey-1/candidate/source/app.ts",
+        "line": 3,
+        "column": 2,
+        "functionRange": {
+          "startOffset": 17,
+          "endOffset": 321
+        },
+        "measure": "count"
+      },
+      "expected": 2
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "8d5ac3bdc26ff0f5caf724ea9ea934a95695ec7e",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "f4aecb81f61ee27c8b40ac0579b815940fe1bc34",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
