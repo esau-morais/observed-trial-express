@@ -7,7 +7,7 @@ Bun.serve({
     const pathname = new URL(request.url).pathname;
 
     if (pathname === '/api/status') {
-      const status = 200;
+      const status = 503;
       const response = Response.json({ ready: true }, { status });
       console.log(JSON.stringify({ method: request.method, path: pathname, status: response.status }));
       return response;
