@@ -1,0 +1,37 @@
+const root = import.meta.dirname;
+
+Bun.serve({
+  hostname: '127.0.0.1',
+  port: Number(process.env.PORT ?? 0),
+  fetch(request) {
+    const pathname = new URL(request.url).pathname;
+
+    if (pathname === '/api/status') {
+      const status = 200;
+      const response = Response.json({ ready: true }, { status });
+      console.log(JSON.stringify({ method: request.method, path: pathname, status: response.status }));
+      return response;
+    }
+
+    if (pathname === '/api/items') {
+      return Response.json(['one']);
+    }
+
+    if (pathname === '/favicon.ico') {
+      return new Response(null, { status: 204 });
+    }
+
+    const files: Record<string, string> = {
+      '/': 'index.html',
+      '/app.js': 'dist/app.js',
+      '/app.js.map': 'dist/app.js.map',
+    };
+    const filename = files[pathname];
+
+    return filename === undefined
+      ? new Response('Not found', { status: 404 })
+      : new Response(Bun.file(`${root}/${filename}`));
+  },
+});
+
+export {};
