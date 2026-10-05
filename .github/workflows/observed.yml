@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: esau-morais/observed@e160172d284ecd7ecde0a7698679c871caeaabfa
+      - uses: esau-morais/observed@dcaa1ab83652ee71055ade6459f077614c2d7c1d
         env:
           OBSERVED_FROM_SOURCE: true
         with:

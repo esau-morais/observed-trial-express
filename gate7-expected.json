@@ -1,0 +1,165 @@
+{
+  "id": "outside-source",
+  "gate": 7,
+  "reason": "Only README.md changes, outside source.paths.",
+  "exitCode": 0,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "no-regression"
+    },
+    {
+      "label": "base one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/base/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    },
+    {
+      "label": "candidate one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/candidate/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    },
+    {
+      "label": "only the outside file changed",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "changeScope",
+          "files",
+          "length"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "label": "outside file listed",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "changeScope",
+          "files",
+          {
+            "key": "path",
+            "equals": "README.md"
+          },
+          "relation"
+        ]
+      },
+      "expected": "outside-captured-source"
+    },
+    {
+      "label": "report wording: No captured file changed\\.",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "No captured file changed\\."
+      },
+      "expected": true
+    },
+    {
+      "label": "report wording: 1 file changed outside the captured source\\.",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "1 file changed outside the captured source\\."
+      },
+      "expected": true
+    },
+    {
+      "label": "report wording: - README\\.md \\(modified\\)",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "- gate\\-corpus/README\\.md \\(modified\\)"
+      },
+      "expected": true
+    },
+    {
+      "label": "report wording: Checks cover only their stated expectations and scopes",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "Checks cover only their stated expectations and scopes"
+      },
+      "expected": true
+    },
+    {
+      "label": "report wording: checks describe unchanged behavior",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "checks describe unchanged behavior"
+      },
+      "expected": false
+    },
+    {
+      "label": "report wording: verified change",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "verified change"
+      },
+      "expected": false
+    },
+    {
+      "label": "report wording: safe to merge",
+      "actual": {
+        "kind": "text",
+        "file": "report.md",
+        "includes": "safe to merge"
+      },
+      "expected": false
+    }
+  ]
+}
