@@ -21,8 +21,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      # Session H 2026-10-05: the feat/scene-gif build of Observed (8f352d5).
-      - uses: esau-morais/observed@8f352d5a1a1ffbbceaa57de77492a2bdb91d4211
+      # Session H 2026-10-05: the feat/scene-gif build of Observed (ad069dc).
+      - uses: esau-morais/observed@ad069dc23cf7b99dd478a1a0e2ef980189e959b2
         env:
           OBSERVED_FROM_SOURCE: true
         with:
