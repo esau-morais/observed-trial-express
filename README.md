@@ -40,3 +40,11 @@ requirementDiagram
     verifymethod: test
   }
 ```
+
+## Sequence
+
+```mermaid
+sequenceDiagram
+  Browser->>Invoices: Load the current invoice list for this account
+  Invoices-->>Browser: Return the invoice list
+```
