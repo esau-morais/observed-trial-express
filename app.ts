@@ -10,7 +10,7 @@ function paint() {
   description.textContent = `Paint ${painted}`;
 }
 
-const repetitions = 1;
+const repetitions = 2;
 const button = document.querySelector('button');
 const result = document.querySelector('#result');
 if (button === null || result === null) {
