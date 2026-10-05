@@ -18,13 +18,25 @@ Actions secret.
 ## Invoice request
 
 ```mermaid
+---
+config:
+  flowchart:
+    theme: dark
+  fontFamily: monospace
+---
 flowchart LR
-  Browser --> Authentication --> Invoices
+  Browser --> Authentication --> Audit --> Invoices
 ```
 
 ## Entity relationship
 
 ```mermaid
+---
+config:
+  er:
+    theme: dark
+  fontFamily: monospace
+---
 erDiagram
   CUSTOMER ||--o{ ORDER : places
 ```
@@ -32,6 +44,12 @@ erDiagram
 ## Requirements
 
 ```mermaid
+---
+config:
+  requirement:
+    theme: dark
+  fontFamily: monospace
+---
 requirementDiagram
   requirement invoice_request {
     id: 1
@@ -44,6 +62,13 @@ requirementDiagram
 ## Sequence
 
 ```mermaid
+---
+config:
+  sequence:
+    theme: dark
+  wrap: true
+  fontFamily: monospace
+---
 sequenceDiagram
   Browser->>Invoices: Load the current invoice list for this account
   Invoices-->>Browser: Return the invoice list
