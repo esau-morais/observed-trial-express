@@ -2,7 +2,7 @@ import { createElement, useLayoutEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 
-const extraRender = false;
+const extraRender = true;
 let commits = 0;
 
 function App() {
