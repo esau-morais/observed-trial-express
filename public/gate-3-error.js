@@ -1,4 +1,4 @@
 document.querySelector('#error').addEventListener('click', () => {
-  document.querySelector('#output').textContent = 'Invoice detail is ready';
+  throw new Error('Gate 3 invoice detail failed');
 });
 //# sourceMappingURL=gate-3-error.js.map
