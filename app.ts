@@ -13,7 +13,7 @@ button.addEventListener('click', () => {
       result.textContent = resultText;
       const input = document.createElement('input');
       input.id = 'item-name';
-      input.setAttribute('aria-label', 'Item name');
+
       document.querySelector('main')?.append(input);
       document.body.dataset.done = 'true';
     })
