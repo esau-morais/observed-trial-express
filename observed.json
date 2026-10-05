@@ -15,26 +15,73 @@
       "package-lock.json"
     ]
   },
-  "setup": [["npm", "install"]],
-  "start": ["node", "server.js"],
-  "ready": { "path": "/login", "status": 200 },
+  "setup": [
+    [
+      "npm",
+      "install"
+    ]
+  ],
+  "start": [
+    "node",
+    "server.js"
+  ],
+  "ready": {
+    "path": "/login",
+    "status": 200
+  },
   "capture": {
     "name": "Sign in as Ada",
     "path": "/login",
     "ready": [
-      { "kind": "wait-selector", "selector": "#password" },
-      { "kind": "fill", "selector": "#username", "value": "ada" },
-      { "kind": "fill", "selector": "#password", "value": { "env": "DEMO_PASSWORD" } },
-      { "kind": "click-role", "role": "button", "name": "Sign in" },
-      { "kind": "wait-text", "text": "Signed in as Ada Lovelace" },
-      { "kind": "wait-text", "text": "INV-1041" },
-      { "kind": "network-idle" }
+      {
+        "kind": "wait-selector",
+        "selector": "#password"
+      },
+      {
+        "kind": "fill",
+        "selector": "#username",
+        "value": "ada"
+      },
+      {
+        "kind": "fill",
+        "selector": "#password",
+        "value": {
+          "env": "DEMO_PASSWORD"
+        }
+      },
+      {
+        "kind": "click-role",
+        "role": "button",
+        "name": "Sign in"
+      },
+      {
+        "kind": "wait-text",
+        "text": "Signed in as Ada Lovelace"
+      },
+      {
+        "kind": "wait-text",
+        "text": "INV-1041"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "steps": [
-      { "kind": "navigate", "path": "/invoices" },
-      { "kind": "wait-text", "text": "Signed in as Ada Lovelace" },
-      { "kind": "wait-text", "text": "INV-1041" },
-      { "kind": "network-idle" }
+      {
+        "kind": "navigate",
+        "path": "/invoices"
+      },
+      {
+        "kind": "wait-text",
+        "text": "Signed in as Ada Lovelace"
+      },
+      {
+        "kind": "wait-text",
+        "text": "INV-1041"
+      },
+      {
+        "kind": "network-idle"
+      }
     ],
     "check": {
       "kind": "text",
@@ -43,7 +90,6 @@
       "scope": "Invoices page after signing in as ada.",
       "selector": "header p",
       "expectedText": "Signed in as Ada Lovelace"
-    },
-    "browserArguments": ["--no-sandbox"]
+    }
   }
 }
