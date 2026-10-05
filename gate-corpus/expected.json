@@ -1,0 +1,108 @@
+{
+  "id": "request-fault",
+  "gate": 2,
+  "reason": "One click sends two requests instead of one.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "base one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/base/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    },
+    {
+      "label": "candidate one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 2,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/candidate/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    }
+  ]
+}
