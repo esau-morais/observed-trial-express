@@ -17,6 +17,20 @@
       "expected": "unavailable"
     },
     {
+      "label": "failed base prevents comparison",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "comparison",
+          "kind"
+        ]
+      },
+      "expected": "unavailable"
+    },
+    {
       "label": "base application failure",
       "actual": {
         "kind": "json",
@@ -97,24 +111,6 @@
       "expected": "unknown"
     },
     {
-      "label": "one-request cannot establish a regression or pass",
-      "actual": {
-        "kind": "json",
-        "file": "result.json",
-        "path": [
-          "journeys",
-          0,
-          "checks",
-          {
-            "key": "id",
-            "equals": "one-request"
-          },
-          "verdict"
-        ]
-      },
-      "expected": "unknown"
-    },
-    {
       "label": "one-request candidate passes",
       "actual": {
         "kind": "json",
@@ -148,24 +144,6 @@
             "equals": "loaded-text"
           },
           "outcome"
-        ]
-      },
-      "expected": "unknown"
-    },
-    {
-      "label": "loaded-text cannot establish a regression or pass",
-      "actual": {
-        "kind": "json",
-        "file": "result.json",
-        "path": [
-          "journeys",
-          0,
-          "checks",
-          {
-            "key": "id",
-            "equals": "loaded-text"
-          },
-          "verdict"
         ]
       },
       "expected": "unknown"
