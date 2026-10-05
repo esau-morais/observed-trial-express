@@ -1,0 +1,254 @@
+{
+  "id": "playwright-fault",
+  "gate": 2,
+  "reason": "An unchanged Playwright assertion catches the candidate marking loaded items unsaved.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "playwright: saved.spec.ts › loaded items are saved verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "playwright: saved.spec.ts › loaded items are saved"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base imported measurement matches the raw test attempt",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "playwright: saved.spec.ts › loaded items are saved"
+          },
+          "actual"
+        ]
+      },
+      "expected": "passed",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/playwright/report.json",
+        "path": [
+          "suites",
+          0,
+          "specs",
+          {
+            "key": "title",
+            "equals": "loaded items are saved"
+          },
+          "tests",
+          0,
+          "results",
+          0,
+          "status"
+        ]
+      }
+    },
+    {
+      "label": "base exactly one test ran",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/playwright/report.json",
+        "path": [
+          "suites",
+          0,
+          "specs",
+          "length"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "label": "base no suite-level error",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/playwright/report.json",
+        "path": [
+          "errors",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "candidate imported measurement matches the raw test attempt",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "playwright: saved.spec.ts › loaded items are saved"
+          },
+          "actual"
+        ]
+      },
+      "expected": "failed",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/playwright/report.json",
+        "path": [
+          "suites",
+          0,
+          "specs",
+          {
+            "key": "title",
+            "equals": "loaded items are saved"
+          },
+          "tests",
+          0,
+          "results",
+          0,
+          "status"
+        ]
+      }
+    },
+    {
+      "label": "candidate exactly one test ran",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/playwright/report.json",
+        "path": [
+          "suites",
+          0,
+          "specs",
+          "length"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "label": "candidate no suite-level error",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/playwright/report.json",
+        "path": [
+          "errors",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "23e3ef18768671c1dc6579ec2450e7d34cf82a54",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "3abbb0fecdb1c66f1a842490d3a0a9354b9cfbaa",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
