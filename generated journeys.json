@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "journeys": [
+    {
+      "name": "Inspect the item list",
+      "path": "/",
+      "ready": [
+        {
+          "kind": "wait-text",
+          "text": "Load items"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "click-role",
+          "role": "button",
+          "name": "Load items"
+        },
+        {
+          "kind": "wait-text",
+          "text": "Items loaded"
+        },
+        {
+          "kind": "network-idle"
+        }
+      ],
+      "targets": [
+        "App.tsx"
+      ],
+      "reason": "Inspect the rendered item list with independent baseline checks."
+    }
+  ]
+}
