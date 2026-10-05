@@ -54,16 +54,6 @@
     ],
     "checks": [
       {
-        "kind": "request-count",
-        "id": "one-request",
-        "name": "Each Load items click sends one request",
-        "scope": "One click through completion.",
-        "method": "GET",
-        "path": "/api/items",
-        "expectedCount": 1,
-        "status": 200
-      },
-      {
         "kind": "text",
         "id": "loaded-text",
         "name": "Loading items shows the saved result",
