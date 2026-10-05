@@ -21,3 +21,22 @@ Actions secret.
 flowchart LR
   Browser --> Authentication --> Invoices
 ```
+
+## Entity relationship
+
+```mermaid
+erDiagram
+  CUSTOMER ||--o{ ORDER : places
+```
+
+## Requirements
+
+```mermaid
+requirementDiagram
+  requirement invoice_request {
+    id: 1
+    text: "Invoice request"
+    risk: low
+    verifymethod: test
+  }
+```
