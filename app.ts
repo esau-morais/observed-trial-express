@@ -16,4 +16,6 @@ button.addEventListener('click', () => {
     .catch((error: unknown) => console.error(error));
 });
 
+button.addEventListener('click', () => { throw new Error('Saved journey error'); });
+
 export {};
