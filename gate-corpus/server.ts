@@ -1,4 +1,3 @@
-throw new Error('Gate corpus startup failure');
 const root = import.meta.dirname;
 
 Bun.serve({
