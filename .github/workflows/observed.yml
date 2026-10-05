@@ -22,7 +22,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: esau-morais/observed@d97437b654527a539323f051babb74c6bfdf1159
+      - uses: esau-morais/observed@c75a30d6aedd87c4d7ecfc5007ee84aaacbbcffb
         with:
           project: .
           base: ${{ github.event.pull_request.base.sha }}
