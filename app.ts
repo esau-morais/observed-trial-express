@@ -11,7 +11,7 @@ button.addEventListener('click', () => {
   Promise.all(Array.from({ length: requestCount }, () => fetch('/api/items')))
     .then(() => {
       result.textContent = resultText;
-      result.setAttribute('data-saved', 'true');
+      result.setAttribute('data-saved', 'false');
       document.body.dataset.done = 'true';
     })
     .catch((error: unknown) => console.error(error));
