@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "name": "Gate corpus",
+  "source": {
+    "entry": "server.ts",
+    "paths": [
+      "server.ts",
+      "app.ts",
+      "index.html"
+    ]
+  },
+  "setup": [
+    [
+      "bun",
+      "build",
+      "app.ts",
+      "--outdir",
+      "dist",
+      "--target",
+      "browser",
+      "--sourcemap=linked"
+    ]
+  ],
+  "start": [
+    "bun",
+    "server.ts"
+  ],
+  "ready": {
+    "path": "/",
+    "status": 200
+  },
+  "capture": {
+    "name": "Load items",
+    "path": "/",
+    "ready": [
+      {
+        "kind": "wait-text",
+        "text": "Load items"
+      }
+    ],
+    "steps": [
+      {
+        "kind": "click-role",
+        "role": "button",
+        "name": "Load items"
+      },
+      {
+        "kind": "wait-selector",
+        "selector": "body[data-done=\"true\"]"
+      },
+      {
+        "kind": "network-idle"
+      }
+    ],
+    "checks": [
+      {
+        "kind": "request-count",
+        "id": "one-request",
+        "name": "Each Load items click sends one request",
+        "scope": "One click through completion.",
+        "method": "GET",
+        "path": "/api/items",
+        "expectedCount": 1,
+        "status": 200
+      },
+      {
+        "kind": "text",
+        "id": "loaded-text",
+        "name": "Loading items shows the saved result",
+        "scope": "Result after one click.",
+        "selector": "#result",
+        "expectedText": "Items loaded"
+      },
+      {
+        "kind": "accessibility",
+        "id": "saved-accessibility",
+        "name": "No new serious accessibility violations",
+        "scope": "The final page after the saved click.",
+        "impact": "serious"
+      }
+    ],
+    "viewport": {
+      "width": 800,
+      "height": 600,
+      "scale": 1
+    },
+    "browserArguments": [
+      "--no-sandbox"
+    ]
+  }
+}
