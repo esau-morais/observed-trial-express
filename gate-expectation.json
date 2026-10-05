@@ -1,0 +1,224 @@
+{
+  "id": "api-status-fault",
+  "gate": 2,
+  "reason": "The saved API operation returns 503 instead of its protected 200 expectation.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "saved-api verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-api"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base API status agrees with the application response log",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-api"
+          },
+          "actual"
+        ]
+      },
+      "expected": 200,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/application.log",
+        "path": [
+          "status"
+        ]
+      }
+    },
+    {
+      "label": "base raw operation method",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/application.log",
+        "path": [
+          "method"
+        ]
+      },
+      "expected": "GET"
+    },
+    {
+      "label": "base raw operation path",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/application.log",
+        "path": [
+          "path"
+        ]
+      },
+      "expected": "/api/status"
+    },
+    {
+      "label": "candidate API status agrees with the application response log",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-api"
+          },
+          "actual"
+        ]
+      },
+      "expected": 503,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/application.log",
+        "path": [
+          "status"
+        ]
+      }
+    },
+    {
+      "label": "candidate raw operation method",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/application.log",
+        "path": [
+          "method"
+        ]
+      },
+      "expected": "GET"
+    },
+    {
+      "label": "candidate raw operation path",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/application.log",
+        "path": [
+          "path"
+        ]
+      },
+      "expected": "/api/status"
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "eeedcc1b60391b11d1e81adbb3dada8f03d06157",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "7e2022fff871cbf3c6fc39aac1b1a6886f7761e5",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
