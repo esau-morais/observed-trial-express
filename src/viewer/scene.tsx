@@ -74,7 +74,7 @@ function wideLayout(scene: Scene): Layout {
     boxes.set(entity.id, {
       x: 648,
       y: top + index * (boxHeight + gap),
-      w: 256,
+      w: 160,
       h: boxHeight,
     });
   }
