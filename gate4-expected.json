@@ -1,0 +1,219 @@
+{
+  "id": "startup-failure",
+  "gate": 4,
+  "reason": "A real base process exits before readiness; its checks stay unknown.",
+  "exitCode": 1,
+  "assertions": [
+    {
+      "label": "unavailable conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "unavailable"
+    },
+    {
+      "label": "base application failure",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "execution"
+        ]
+      },
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "execution"
+        ]
+      },
+      "expected": {
+        "kind": "failed",
+        "category": "application",
+        "reason": "Application exited before readiness; see application.log"
+      }
+    },
+    {
+      "label": "real process error retained",
+      "actual": {
+        "kind": "text",
+        "file": "journey-1/base/application.log",
+        "includes": "error: Gate corpus startup failure"
+      },
+      "expected": true
+    },
+    {
+      "label": "failed process exited and was cleaned up",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/server-cleanup.json",
+        "path": [
+          "stopped"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "label": "failed process exit status",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/server-cleanup.json",
+        "path": [
+          "exit"
+        ]
+      },
+      "expected": {
+        "kind": "exited",
+        "code": 1
+      }
+    },
+    {
+      "label": "one-request base is unknown",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "outcome"
+        ]
+      },
+      "expected": "unknown"
+    },
+    {
+      "label": "one-request cannot establish a regression or pass",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "unknown"
+    },
+    {
+      "label": "one-request candidate passes",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "outcome"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text base is unknown",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "outcome"
+        ]
+      },
+      "expected": "unknown"
+    },
+    {
+      "label": "loaded-text cannot establish a regression or pass",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "unknown"
+    },
+    {
+      "label": "loaded-text candidate passes",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "outcome"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "candidate request measurement matches the producer",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/candidate/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      },
+      "expected": 1
+    }
+  ]
+}
