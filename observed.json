@@ -50,6 +50,9 @@
       },
       {
         "kind": "network-idle"
+      },
+      {
+        "kind": "network-idle"
       }
     ],
     "checks": [
