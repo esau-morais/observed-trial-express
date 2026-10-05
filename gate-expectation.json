@@ -1,0 +1,198 @@
+{
+  "id": "text-fault",
+  "gate": 2,
+  "reason": "The saved result text is wrong after the click.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/base/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    },
+    {
+      "label": "candidate one-request matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "requests",
+        "file": "journey-1/candidate/requests.har",
+        "method": "GET",
+        "pathname": "/api/items",
+        "status": 200
+      }
+    },
+    {
+      "label": "base loaded-text matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "actual"
+        ]
+      },
+      "expected": "Items loaded",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/text-1.json",
+        "path": [
+          "data",
+          "text"
+        ]
+      }
+    },
+    {
+      "label": "candidate loaded-text matches raw output",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "actual"
+        ]
+      },
+      "expected": "Wrong items",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/text-1.json",
+        "path": [
+          "data",
+          "text"
+        ]
+      }
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "64ae22139bc0379a771edf5235aa2d0076af342e",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "19fcf903dee6a596c5753e3c197b29af7c6a7cde",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
