@@ -1,0 +1,248 @@
+{
+  "id": "accessibility-fault",
+  "gate": 2,
+  "reason": "The saved click adds an input whose accessible name is removed on the candidate.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "saved-accessibility verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-accessibility"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base saved-accessibility agrees with raw producer count",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-accessibility"
+          },
+          "actual"
+        ]
+      },
+      "expected": 0,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/a11y.json",
+        "path": [
+          "data",
+          "violations",
+          "length"
+        ]
+      }
+    },
+    {
+      "label": "candidate saved-accessibility agrees with raw producer count",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-accessibility"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/a11y.json",
+        "path": [
+          "data",
+          "violations",
+          "length"
+        ]
+      }
+    },
+    {
+      "label": "raw violation is the unnamed input",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/a11y.json",
+        "path": [
+          "data",
+          "violations",
+          {
+            "key": "id",
+            "equals": "label"
+          },
+          "nodes",
+          0,
+          "target"
+        ]
+      },
+      "expected": [
+        "#item-name"
+      ]
+    },
+    {
+      "label": "one element violates the label rule",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/a11y.json",
+        "path": [
+          "data",
+          "violations",
+          {
+            "key": "id",
+            "equals": "label"
+          },
+          "nodeCount"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "label": "base no incomplete audit rules",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/a11y.json",
+        "path": [
+          "data",
+          "incomplete",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "candidate no incomplete audit rules",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/a11y.json",
+        "path": [
+          "data",
+          "incomplete",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "1908a5fdfbe67a475f89db7886162b86d3ab4f08",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "7590bc0c99f8b4d1ffab82ba8e042ac61ee8980f",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
