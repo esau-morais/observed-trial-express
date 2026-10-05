@@ -1,0 +1,219 @@
+{
+  "id": "browser-errors-fault",
+  "gate": 2,
+  "reason": "A saved click raises one uncaught page error while its request and text checks still pass.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "saved-errors verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-errors"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base saved-errors agrees with raw producer count",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-errors"
+          },
+          "actual"
+        ]
+      },
+      "expected": 0,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/errors.json",
+        "path": [
+          "data",
+          "errors",
+          "length"
+        ]
+      }
+    },
+    {
+      "label": "candidate saved-errors agrees with raw producer count",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-errors"
+          },
+          "actual"
+        ]
+      },
+      "expected": 1,
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/errors.json",
+        "path": [
+          "data",
+          "errors",
+          "length"
+        ]
+      }
+    },
+    {
+      "label": "candidate raw error identity",
+      "actual": {
+        "kind": "text",
+        "file": "journey-1/candidate/errors.json",
+        "includes": "Error: Saved journey error"
+      },
+      "expected": true
+    },
+    {
+      "label": "base no console messages",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/base/console.json",
+        "path": [
+          "data",
+          "messages",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "candidate no console messages",
+      "actual": {
+        "kind": "json",
+        "file": "journey-1/candidate/console.json",
+        "path": [
+          "data",
+          "messages",
+          "length"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "ac66ba297a6691600db14e939efc8178a00d0e56",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "af097cffe204d9d0396e0829338084a26189c957",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
