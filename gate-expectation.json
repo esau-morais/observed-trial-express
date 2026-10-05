@@ -1,0 +1,154 @@
+{
+  "id": "performance-fault",
+  "gate": 2,
+  "reason": "The candidate blocks document loading for two seconds, beyond the protected one-second median load budget.",
+  "exitCode": 2,
+  "assertions": [
+    {
+      "label": "conclusion",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "conclusion",
+          "kind"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "one-request verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "one-request"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "loaded-text verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "loaded-text"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "passed"
+    },
+    {
+      "label": "saved-load verdict",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "checks",
+          {
+            "key": "id",
+            "equals": "saved-load"
+          },
+          "verdict"
+        ]
+      },
+      "expected": "regression"
+    },
+    {
+      "label": "base raw load samples, check measurement and budget agree",
+      "actual": {
+        "kind": "load-budget",
+        "file": "result.json",
+        "side": "base",
+        "check": "saved-load",
+        "max": 1000,
+        "samples": 3,
+        "warmup": 1
+      },
+      "expected": true
+    },
+    {
+      "label": "candidate raw load samples, check measurement and budget agree",
+      "actual": {
+        "kind": "load-budget",
+        "file": "result.json",
+        "side": "candidate",
+        "check": "saved-load",
+        "max": 1000,
+        "samples": 3,
+        "warmup": 1
+      },
+      "expected": false
+    },
+    {
+      "label": "base journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "base",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "fc2f21ca01de969ccf10aee2626551b3b4829e96",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/base/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    },
+    {
+      "label": "candidate journey 1 pinned revision",
+      "actual": {
+        "kind": "json",
+        "file": "result.json",
+        "path": [
+          "journeys",
+          0,
+          "candidate",
+          "capture",
+          "manifest",
+          "source",
+          "revision",
+          "commit"
+        ]
+      },
+      "expected": "9f52af7191c08bcf0a943f3ac7ee737b28556802",
+      "raw": {
+        "kind": "json",
+        "file": "journey-1/candidate/capture.json",
+        "path": [
+          "source",
+          "revision",
+          "commit"
+        ]
+      }
+    }
+  ]
+}
