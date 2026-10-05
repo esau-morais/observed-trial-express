@@ -14,3 +14,10 @@ npm start   # http://localhost:3000 (set PORT to change it)
 Sign in as `ada`. The demo password is not committed. Developers have it in the
 `DEMO_PASSWORD` environment variable, and CI reads it from the `DEMO_PASSWORD`
 Actions secret.
+
+## Invoice request
+
+```mermaid
+flowchart LR
+  Browser --> Authentication --> Invoices
+```
