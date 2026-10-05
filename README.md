@@ -1,6 +1,6 @@
 # Team invoices
 
-A server-rendered Express app with a login form and an invoice list.
+A server-rendered Express app with a login form and an invoice list for team members.
 
 > This repository is a disposable test fixture for [Observed](https://github.com/esau-morais/observed).
 
