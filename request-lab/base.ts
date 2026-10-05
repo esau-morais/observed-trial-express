@@ -3,11 +3,5 @@ import { requestItems, type Item } from './items';
 export const title = 'Item collection';
 
 export async function loadItems(): Promise<readonly Item[]> {
-  const items = await requestItems();
-
-  setTimeout(() => {
-    throw new Error('Item count was not recorded');
-  });
-
-  return items;
+  return requestItems();
 }
